@@ -1,6 +1,7 @@
 pipeline {
 	agent any
 	stages {
+		/*
 		stage("Cleaning Stage") {
 			steps{
 				bat "mvn clean"
@@ -18,6 +19,27 @@ pipeline {
 				echo "Packaging stage"
 			}
 		}
+		*/
+
+		stage("Parallel Execution") {
+			steps {
+				parallel(
+				      a: {
+					//bat "mvn clean"
+					      echo "mvn clean"
+				      },
+				      b: {
+					//bat "mvn test"
+					      echo "mvn test"
+				      },
+				      c: {
+					//bat "mvn package"
+					      echo "mvn package"
+				      }
+				)
+			}
+		}
+		
 		stage("Consolidate Results") {
 			steps {
 				input ("Do you want to capture results?")
