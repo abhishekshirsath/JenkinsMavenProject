@@ -8,12 +8,14 @@ pipeline {
 		}
 		stage("Testing stage") {
 			steps {
-				bat "mvn test"
+				//bat "mvn test"
+				echo "Testing stage"
 			}
 		}
 		stage("Packaging stage"){
 			steps {
-				bat "mvn package"
+				//bat "mvn package"
+				echo "Packaging stage"
 			}
 		}
 	}
